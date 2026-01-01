@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — Jinny Kim</title>
+  <link rel="stylesheet" href="index2.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="masthead">
+    <div class="mast-inner">
+      <a class="site-name" href="../homepage/index.html">by. Jinny K</a>
+
+      <nav class="mast-nav" aria-label="Primary">
+        <a class="active" href="gallery.html">Gallery</a>
+        <a href="../About/index1.html">About</a>
+        <a href="../contact/index4.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- Divider / filter -->
+    <section class="category-bar" aria-label="Categories">
+      <button class="cat active" data-filter="all">All</button>
+      <span class="slash">/</span>
+      <button class="cat" data-filter="publication">Publications</button>
+      <span class="slash">/</span>
+      <button class="cat" data-filter="uiux">UIUX</button>
+      <span class="slash">/</span>
+      <button class="cat" data-filter="branding">Branding</button>
+    </section>
+
+    <!-- ONE GRID that auto-reflows -->
+    <section class="gallery" aria-label="Project gallery">
+
+      <!-- PUBLICATION (4) -->
+      <!-- Biggest: Daily Queue -->
+      <a class="tile" href="../the daily queue book/index5.html"
+         data-tags="publication" data-priority="1">
+        <img src="dailyqueue mockup.jpg" alt="The Daily Queue thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">The Daily Queue</div>
+          <div class="tile-sub">Publication</div>
+        </div>
+      </a>
+
+      <!-- 2nd biggest: Thank you (Publication) -->
+      <a class="tile" href="../thank you have a nice day book/index3.html"
+         data-tags="publication" data-priority="2">
+        <img src="Scan 27.jpg" alt="Thank you, Have a Nice Day thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">Thank you, Have a Nice Day</div>
+          <div class="tile-sub">Publication</div>
+        </div>
+      </a>
+
+      <a class="tile" href="../waves of belongings/index7.html"
+         data-tags="publication" data-priority="30">
+        <img src="Kim_Jinny_Wave of belonging_3.jpg" alt="Publication 03 thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">Waves of Belongings</div>
+          <div class="tile-sub">Publication</div>
+        </div>
+      </a>
+
+      <a class="tile" href="../social campagin/index9.html"
+         data-tags="publication" data-priority="40">
+        <img src="poster mockup.jpg" alt="Publication 04 thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">Social Campaign</div>
+          <div class="tile-sub">Publication</div>
+        </div>
+      </a>
+
+      <!-- UIUX (4) -->
+      <a class="tile" href="../daily queue uiux/index8.html"
+         data-tags="uiux" data-priority="10">
+        <img src="daily queue phone.png" alt="UIUX 01 thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">UIUX Project 01</div>
+          <div class="tile-sub">UIUX</div>
+        </div>
+      </a>
+
+      <a class="tile" href="../thank you have a nice day UIUX/index6.html"
+         data-tags="uiux" data-priority="20">
+        <img src="thankyou tumbnail.png" alt="UIUX 02 thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">UIUX Project 02</div>
+          <div class="tile-sub">UIUX</div>
+        </div>
+      </a>
+
+      <a class="tile" href="../irvine/index11.html"
+         data-tags="uiux" data-priority="30">
+        <img src="irvine home.png" alt="UIUX 03 thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">UIUX Project 03</div>
+          <div class="tile-sub">UIUX</div>
+        </div>
+      </a>
+
+      <a class="tile" href="../my mister/index10.html"
+         data-tags="uiux" data-priority="40">
+        <img src="mister home.png" alt="UIUX 04 thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">UIUX Project 04</div>
+          <div class="tile-sub">UIUX</div>
+        </div>
+      </a>
+
+      <!-- BRANDING (1) -->
+      <a class="tile" href="../quaker oats/index7.html"
+         data-tags="branding" data-priority="5">
+        <img src="quaker poster.jpg" alt="Branding thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">Quaker Oats Rebrand</div>
+          <div class="tile-sub">Branding</div>
+        </div>
+      </a>
+
+      <!-- EXTRA (1) so total = 10 -->
+      <a class="tile" href="project-extra-01.html"
+         data-tags="other" data-priority="90">
+        <img src="home.jpg" alt="Extra project thumbnail">
+        <div class="tile-meta">
+          <div class="tile-title">Extra Project</div>
+          <div class="tile-sub">Other</div>
+        </div>
+      </a>
+
+    </section>
+  </main>
+
+  <script>
+    const cats = document.querySelectorAll(".cat");
+    const tiles = Array.from(document.querySelectorAll(".tile"));
+
+    function applyLayout(filter) {
+      // visible tiles (based on filter)
+      const visible = tiles.filter(t => {
+        const tags = (t.dataset.tags || "").split(" ");
+        return (filter === "all") || tags.includes(filter);
+      });
+
+      // hide/show + reset classes
+      tiles.forEach(t => {
+        t.classList.remove("is-hidden", "is-big", "is-mid");
+        t.style.order = "";
+        const tags = (t.dataset.tags || "").split(" ");
+        const show = (filter === "all") || tags.includes(filter);
+        if (!show) t.classList.add("is-hidden");
+      });
+
+      // Decide which is BIG and MID within the current filtered set
+      // BIG: priority 1 if present, else the smallest priority number
+      // MID: priority 2 if present, else next smallest
+      const sorted = visible
+        .slice()
+        .sort((a,b) => (Number(a.dataset.priority||999) - Number(b.dataset.priority||999)));
+
+      const big = sorted.find(t => Number(t.dataset.priority) === 1) || sorted[0];
+      let mid = sorted.find(t => Number(t.dataset.priority) === 2) || sorted[1];
+
+      if (big) big.classList.add("is-big");
+      if (mid && mid !== big) mid.classList.add("is-mid");
+
+      // Reorder so big first, mid second, then the rest by priority
+      sorted.forEach((t, i) => t.style.order = String(10 + i)); // base
+      if (big) big.style.order = "0";
+      if (mid && mid !== big) mid.style.order = "1";
+    }
+
+    // init
+    applyLayout("all");
+
+    // click handlers
+    cats.forEach(btn => {
+      btn.addEventListener("click", () => {
+        cats.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        applyLayout(btn.dataset.filter);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

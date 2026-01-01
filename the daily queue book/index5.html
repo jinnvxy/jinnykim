@@ -1,0 +1,138 @@
+<!-- project-blue.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>The Daily Queue - Book</title>
+  <link rel="stylesheet" href="project.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+
+<body class="proj-page">
+  <!-- top -->
+  <header class="proj-top">
+    <a class="proj-name" href="../homepage/index.html">by. Jinny K</a>
+
+    <nav class="proj-nav" aria-label="Primary">
+      <a href="../works/index2.html">Gallery</a>
+      <a href="../About/index1.html">About</a>
+      <a href="../contact/index4.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="proj-wrap">
+    <!-- info row -->
+    <section class="proj-info">
+      <h1 class="proj-title">The Daily Queue - Book</h1>
+
+      <div class="proj-meta">
+        <div class="proj-date">October 2025</div>
+        <p class="proj-desc">
+          This book shows the collection of long lines in NYC revealing how hype and social media shape urban behavior through consumption. 
+          People aren’t simply waiting for food or fashion—they’re consuming experiences, trends, and the very idea of belonging. 
+          Just like online, lining up becomes a way to prove you were there, to take part in the city’s collective desires. 
+          What looks like waiting is also a performance of FOMO, a ritual of overconsumption where being present is itself a product.
+
+          This newspaper-format juxtaposes the old-fashioned form of print with contemporary content, 
+          highlighting the tension between traditional media and the hyper-mediated culture of FOMO and overconsumption.
+          Each headline, photo, and column documents how individuals are influenced to act, consume, and belong, 
+          turning everyday waiting into a reflection of society’s collective desires.
+
+
+        </p>
+      </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section class="proj-stage" aria-label="Project images">
+      <div class="stage-inner">
+
+        <div class="slider" aria-roledescription="carousel">
+          <div class="viewport" tabindex="0" aria-label="Image slider. Use left/right arrow keys.">
+            <div class="track">
+              <div class="slide"><img src="daily queue.jpg" alt="BLUE layout 1"></div>
+              <div class="slide"><img src="daily queue (1).jpg" alt="BLUE layout 2"></div>
+              <div class="slide"><img src="daily queue (2).jpg" alt="BLUE layout 3"></div>
+              <div class="slide"><img src="daily queue (3).jpg" alt="BLUE layout 4"></div>
+              <div class="slide"><img src="daily queue (4).jpg" alt="BLUE layout 5"></div>
+              <div class="slide"><img src="daily queue (5).jpg" alt="BLUE layout 6"></div>
+              <div class="slide"><img src="daily queue (6).jpg" alt="BLUE layout 7"></div>
+              <div class="slide"><img src="daily queue (7).jpg" alt="BLUE layout 8"></div>
+            </div>
+          </div>
+
+          <!-- arrows are AFTER viewport so hover works perfectly -->
+          <button class="arrow arrow-left" type="button" aria-label="Previous image">‹</button>
+          <button class="arrow arrow-right" type="button" aria-label="Next image">›</button>
+
+          <div class="dots" aria-label="Slide indicators"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const slider = document.querySelector(".slider");
+      if (!slider) return;
+
+      const viewport = slider.querySelector(".viewport");
+      const track = slider.querySelector(".track");
+      const slides = Array.from(slider.querySelectorAll(".slide"));
+      const prevBtn = slider.querySelector(".arrow-left");
+      const nextBtn = slider.querySelector(".arrow-right");
+      const dotsWrap = slider.querySelector(".dots");
+
+      let index = 0;
+
+
+
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+
+        // dots
+
+
+        // enable/disable
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === slides.length - 1);
+      }
+
+      function goTo(i) {
+        index = Math.max(0, Math.min(slides.length - 1, i));
+        update();
+      }
+
+      prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index - 1);
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index + 1);
+      });
+
+      // keyboard (when viewport focused) + global arrows
+      viewport.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      update();
+    })();
+  </script>
+</body>
+</html>

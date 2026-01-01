@@ -1,0 +1,133 @@
+<!-- project-blue.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quaker Oats - Rebrand</title>
+  <link rel="stylesheet" href="style7.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+
+<body class="proj-page">
+  <!-- top -->
+  <header class="proj-top">
+    <a class="proj-name" href="../homepage/index.html">by. Jinny K</a>
+
+    <nav class="proj-nav" aria-label="Primary">
+      <a href="../works/index2.html">Gallery</a>
+      <a href="../About/index1.html">About</a>
+      <a href="../contact/index4.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="proj-wrap">
+    <!-- info row -->
+    <section class="proj-info">
+      <h1 class="proj-title">Rebranding Quaker Oats</h1>
+
+      <div class="proj-meta">
+        <div class="proj-date">December 2025</div>
+        <p class="proj-desc">
+            This rebrand reimagines Quaker through the lens of its own history 
+            not by modernizing away from the past, but by elevating it. 
+            Founded in 1877, Quaker has always stood for honesty, simplicity, and nourishment. 
+            Inspired by the Victorian era of the late 1800s, when decorative craftsmanship and expressive typography flourished, 
+            this identity draws from the visual language of that period to reconnect the brand with its origins. 
+            Rather than replacing those values, the new design translates them into a system that feels both time-honored and contemporary, 
+            blending historical character with a clean, modern sensibility.
+        </p>
+      </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section class="proj-stage" aria-label="Project images">
+      <div class="stage-inner">
+
+        <div class="slider" aria-roledescription="carousel">
+          <div class="viewport" tabindex="0" aria-label="Image slider. Use left/right arrow keys.">
+            <div class="track">
+              <div class="slide"><img src="quaker oats.jpg" alt="BLUE layout 1"></div>
+              <div class="slide"><img src="quaker oats (1).jpg" alt="BLUE layout 2"></div>
+              <div class="slide"><img src="quaker oats (2).jpg" alt="BLUE layout 3"></div>
+              <div class="slide"><img src="quaker oats (3).jpg" alt="BLUE layout 4"></div>
+              <div class="slide"><img src="quaker oats (4).jpg" alt="BLUE layout 5"></div>
+              <div class="slide"><img src="quaker oats (5).jpg" alt="BLUE layout 6"></div>
+              <div class="slide"><img src="quaker oats (6).jpg" alt="BLUE layout 7"></div>
+            </div>
+          </div>
+
+          <!-- arrows are AFTER viewport so hover works perfectly -->
+          <button class="arrow arrow-left" type="button" aria-label="Previous image">‹</button>
+          <button class="arrow arrow-right" type="button" aria-label="Next image">›</button>
+
+          <div class="dots" aria-label="Slide indicators"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const slider = document.querySelector(".slider");
+      if (!slider) return;
+
+      const viewport = slider.querySelector(".viewport");
+      const track = slider.querySelector(".track");
+      const slides = Array.from(slider.querySelectorAll(".slide"));
+      const prevBtn = slider.querySelector(".arrow-left");
+      const nextBtn = slider.querySelector(".arrow-right");
+      const dotsWrap = slider.querySelector(".dots");
+
+      let index = 0;
+
+
+
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+
+        // dots
+
+
+        // enable/disable
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === slides.length - 1);
+      }
+
+      function goTo(i) {
+        index = Math.max(0, Math.min(slides.length - 1, i));
+        update();
+      }
+
+      prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index - 1);
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index + 1);
+      });
+
+      // keyboard (when viewport focused) + global arrows
+      viewport.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      update();
+    })();
+  </script>
+</body>
+</html>

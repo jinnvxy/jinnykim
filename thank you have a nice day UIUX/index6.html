@@ -1,0 +1,86 @@
+<!-- thankyou-uiux.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Thank you — UIUX</title>
+  <link rel="stylesheet" href="style6.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="proj-top">
+    <a class="proj-name" href="../homepage/index.html">by. Jinny K</a>
+
+    <nav class="proj-nav" aria-label="Primary">
+      <a href="../works/index2.html">Gallery</a>
+      <a href="../About/index1.html">About</a>
+      <a href="../contact/index4.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="proj-wrap">
+    <section class="proj-info">
+      <h1 class="proj-title">Thank you, Have a Nice Day — UIUX</h1>
+
+      <div class="proj-meta">
+        <div class="proj-date">December 2025</div>
+        <p class="proj-desc">
+          UI/UX design of the publication of "Thank you, Have a Nice Day" brings the physical form
+          into an online experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- MEDIA: exactly what you asked -->
+    <section class="proj-stage" aria-label="Project media">
+      <div class="stage-inner">
+
+        <div class="media-layout">
+          <!-- TOP LEFT: laptop video -->
+          <figure class="tile laptop">
+            <video class="media media-contain" autoplay muted loop playsinline preload="metadata">
+              <source src="thankyou laptop.mp4" type="video/mp4">
+            </video>
+          </figure>
+
+          <!-- TOP RIGHT: image same size as laptop -->
+          <figure class="tile hero-img">
+            <img class="media media-cover" src="Copy of thank you.jpg" alt="UI screen — desktop image">
+          </figure>
+
+          <!-- BOTTOM LEFT: image same size as phone -->
+          <figure class="tile phone-img">
+            <img class="media media-cover" src="Copy of thank you (1).jpg" alt="UI screen — mobile image">
+          </figure>
+
+          <!-- BOTTOM RIGHT: phone video -->
+          <figure class="tile phone">
+            <video class="media media-contain" autoplay muted loop playsinline preload="metadata">
+              <source src="thank you have a nice day mobile.mp4" type="video/mp4">
+            </video>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // autoplay safety for iOS / browsers that block autoplay
+    window.addEventListener("click", () => {
+      document.querySelectorAll("video").forEach(v => {
+        if (v.paused) v.play().catch(()=>{});
+      });
+    }, { once: true });
+  </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>The Daily Queue — UIUX</title>
+  <link rel="stylesheet" href="index8.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="proj-top">
+    <a class="proj-name" href="../homepage/index.html">by. Jinny K</a>
+
+    <nav class="proj-nav" aria-label="Primary">
+      <a href="../works/index2.html">Gallery</a>
+      <a href="../About/index1.html">About</a>
+      <a href="../contact/index4.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="proj-wrap">
+    <section class="proj-info">
+      <h1 class="proj-title">The Daily Queue — UIUX</h1>
+
+      <div class="proj-meta">
+        <div class="proj-date">Novemeber 2025</div>
+        <p class="proj-desc">
+          UI/UX design of the publication of "The Daily Queue" brings the physical form
+          into an online experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- SINGLE CENTERED PHONE VIDEO -->
+    <section class="proj-stage" aria-label="Project media">
+        <div class="stage-inner">
+          <div class="uiux-layout">
+      
+            <!-- LEFT: phone video -->
+            <figure class="phone-frame">
+              <video class="media" autoplay muted loop playsinline preload="metadata">
+                <source src="daily queue web.mp4" type="video/mp4">
+              </video>
+            </figure>
+      
+            <!-- RIGHT: image stack -->
+            <div class="uiux-stack">
+              <img src="Copy of daily queue.jpg" alt="UIUX screen 1">
+              <img src="Copy of daily queue (1).jpg" alt="UIUX screen 2">
+            </div>
+      
+          </div>
+        </div>
+      </section>
+
+  <script>
+    // Safety: if autoplay gets blocked, play on first tap/click
+    window.addEventListener("click", () => {
+      document.querySelectorAll("video.media").forEach(v => {
+        if (v.paused) v.play().catch(()=>{});
+      });
+    }, { once: true });
+  </script>
+</body>
+</html>

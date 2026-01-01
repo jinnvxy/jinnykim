@@ -1,0 +1,180 @@
+:root{
+    --max: 1500px;
+    --fg:#111;
+    --muted: rgba(0,0,0,.68);
+    --line: rgba(0,0,0,.12);
+  }
+  
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:#fff;
+    color:var(--fg);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  /* top */
+  .proj-top{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 34px 22px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 18px;
+  }
+  
+  .proj-name{
+    font-family:"GFS Didot", serif;
+    font-size:54px;
+    letter-spacing:-0.02em;
+    line-height:1;
+    text-decoration:none;
+    color:inherit;
+    white-space: nowrap;
+  }
+  
+  .proj-nav{
+    display:flex;
+    gap:60px;
+    padding-top: 10px;
+    flex-wrap: wrap;
+  }
+  .proj-nav a{
+    text-decoration:none;
+    color:#111;
+    font-size:18px;
+  }
+  .proj-nav a:hover{
+    text-decoration:underline;
+    text-underline-offset:6px;
+  }
+  
+  /* layout */
+  .proj-wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 46px 22px 70px;
+  }
+  
+  .proj-info{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 70px;
+    align-items:start;
+    margin-bottom: 22px;
+  }
+  
+  .proj-title{
+    margin:0;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  
+  .proj-date{
+    font-size:15px;
+    margin-bottom: 10px;
+  }
+  
+  .proj-desc{
+    margin:0;
+    font-size:15px;
+    line-height:1.6;
+    color: var(--muted);
+  }
+  
+  /* stage */
+  .proj-stage{
+    padding: 18px 0 8px;
+  }
+  .stage-inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    display:flex;
+    justify-content:center;
+  }
+  
+  /* SINGLE PHONE VIDEO FRAME */
+  .video-card{
+    margin:0;
+    position:relative;
+    overflow:hidden;
+    background: transparent;
+  }
+  
+  /* centered “phone” sizing */
+  .phone-center{
+    width: min(420px, 70vw);   /* smaller overall */
+    aspect-ratio: 9 / 16;
+  }
+  
+  /* show full phone screen (no crop) */
+  .media{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit: contain;
+    background:#fff;             /* prevents weird edges */
+  }
+  
+/* UIUX media grid */
+.uiux-layout{
+    display:grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* phone video */
+  .phone-frame{
+    width: min(380px, 60vw);
+    aspect-ratio: 9 / 16;
+    position: relative;
+    overflow:hidden;
+  }
+  
+  .phone-frame .media{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit: contain;
+    background:#fff;
+  }
+  
+  /* image stack */
+  .uiux-stack{
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 18px;
+  }
+  
+  .uiux-stack img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+  }
+  
+  /* responsive */
+  @media (max-width: 900px){
+    .uiux-layout{
+      grid-template-columns: 1fr;
+    }
+  
+    .phone-frame{
+      width: min(420px, 92vw);
+      margin: 0 auto;
+    }
+  
+    .uiux-stack{
+      grid-template-rows: auto;
+    }
+  }
+  
+  

@@ -1,0 +1,126 @@
+<!-- project-blue.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Waves of Belonging - Book</title>
+  <link rel="stylesheet" href="index7.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+
+<body class="proj-page">
+  <!-- top -->
+  <header class="proj-top">
+    <a class="proj-name" href="../homepage/index.html">by. Jinny K</a>
+
+    <nav class="proj-nav" aria-label="Primary">
+      <a href="../works/index2.html">Gallery</a>
+      <a href="../About/index1.html">About</a>
+      <a href="../contact/index4.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="proj-wrap">
+    <!-- info row -->
+    <section class="proj-info">
+      <h1 class="proj-title">Waves of Belonging - Book</h1>
+
+      <div class="proj-meta">
+        <div class="proj-date">May 2025</div>
+        <p class="proj-desc">
+            this is a short publication about what home means to me. 
+            Home has always been the place where it comforts me and let’s me take a breathe without having to say anything. 
+            To express this I wanted to show step by step of what home means to me in different ways.
+        </p>
+      </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section class="proj-stage" aria-label="Project images">
+      <div class="stage-inner">
+
+        <div class="slider" aria-roledescription="carousel">
+          <div class="viewport" tabindex="0" aria-label="Image slider. Use left/right arrow keys.">
+            <div class="track">
+              <div class="slide"><img src="Kim_Jinny_Wave of Belonging_1.jpg" alt="BLUE layout 1"></div>
+              <div class="slide"><img src="Kim_Jinny_Wave of Belonging_2.jpg" alt="BLUE layout 2"></div>
+              <div class="slide"><img src="Kim_Jinny_Wave of belonging_3.jpg" alt="BLUE layout 3"></div>
+              <div class="slide"><img src="home mockup 4.jpg" alt="BLUE layout 4"></div>
+            </div>
+          </div>
+
+          <!-- arrows are AFTER viewport so hover works perfectly -->
+          <button class="arrow arrow-left" type="button" aria-label="Previous image">‹</button>
+          <button class="arrow arrow-right" type="button" aria-label="Next image">›</button>
+
+          <div class="dots" aria-label="Slide indicators"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const slider = document.querySelector(".slider");
+      if (!slider) return;
+
+      const viewport = slider.querySelector(".viewport");
+      const track = slider.querySelector(".track");
+      const slides = Array.from(slider.querySelectorAll(".slide"));
+      const prevBtn = slider.querySelector(".arrow-left");
+      const nextBtn = slider.querySelector(".arrow-right");
+      const dotsWrap = slider.querySelector(".dots");
+
+      let index = 0;
+
+
+
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+
+        // dots
+
+
+        // enable/disable
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === slides.length - 1);
+      }
+
+      function goTo(i) {
+        index = Math.max(0, Math.min(slides.length - 1, i));
+        update();
+      }
+
+      prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index - 1);
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index + 1);
+      });
+
+      // keyboard (when viewport focused) + global arrows
+      viewport.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      update();
+    })();
+  </script>
+</body>
+</html>
